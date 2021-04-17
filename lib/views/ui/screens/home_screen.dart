@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sun_bear_blinds/data/models/blind.dart';
 import 'package:sun_bear_blinds/data/models/db.dart';
 import 'package:sun_bear_blinds/views/utils/blind_tile.dart';
+import 'package:sun_bear_blinds/views/utils/dark_mode_switch.dart';
 import 'package:sun_bear_blinds/views/utils/navigation_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Blind> _blinds = [];
+  bool _darkMode = false;
 
   @override
   void initState() {
@@ -45,7 +47,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Switch(value: true, onChanged: (_v) {}) //!
+                            DarkModeSwitch(
+                                value: _darkMode,
+                                onChanged: (_v) {
+                                  setState(() {
+                                    _darkMode = _v;
+                                  });
+                                }),
+                            // Switch(value: true, onChanged: (_v) {}) //!
                           ],
                         ),
                         Container(
