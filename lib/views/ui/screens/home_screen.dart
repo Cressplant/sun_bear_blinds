@@ -7,14 +7,12 @@ import 'package:sun_bear_blinds/views/utils/navigation_bar.dart';
 class HomeScreen extends StatefulWidget {
   static const String id = '/home';
 
-  HomeScreen({Key key}) : super(key: key);
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Blind> _blinds;
+  List<Blind> _blinds = [];
 
   @override
   void initState() {
@@ -35,18 +33,42 @@ class _HomeScreenState extends State<HomeScreen> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) => [
             SliverList(
                 delegate: SliverChildListDelegate([
-              Padding(
-                padding: EdgeInsets.only(top: 30.0, bottom: 10.0),
-                child: Center(
-                    // child: Row(
-                    child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.asset('assets/images/sun_bear_logo.png', height: 80.0, width: 80.0),
-                    SizedBox(height: 10.0),
-                    Text('Sun Bear Blinds', style: TextStyle(color: Colors.black, fontSize: 26, fontWeight: FontWeight.bold)),
-                  ],
-                )),
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10.0),
+                    child: Center(
+                        // child: Row(
+                        child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Switch(value: true, onChanged: (_v) {}) //!
+                          ],
+                        ),
+                        Container(
+                          height: 80.0,
+                          width: 80.0,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.05),
+                                  spreadRadius: 1,
+                                  blurRadius: 2,
+                                  offset: Offset(2, 2), // changes position of shadow
+                                ),
+                              ],
+                              image: DecorationImage(image: AssetImage('assets/images/sun_bear_logo.png'), fit: BoxFit.contain)),
+                        ),
+                        SizedBox(height: 10.0),
+                        Text('Sun Bear Blinds', style: TextStyle(color: Colors.black, fontSize: 26, fontWeight: FontWeight.bold)),
+                      ],
+                    )),
+                  ),
+                ],
               ),
             ])),
             SliverAppBar(
