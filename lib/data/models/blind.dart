@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Blind {
-
   final String name;
   final String description;
-  final int color;
+  final Color primaryColor;
+  final Color accentColor;
   final Brightness brightness;
   final String image;
   final double smallPrice;
@@ -16,7 +16,8 @@ class Blind {
   Blind({
     this.name,
     this.description,
-    this.color,
+    this.accentColor,
+    this.primaryColor,
     this.brightness,
     this.image,
     this.smallPrice,
@@ -24,13 +25,14 @@ class Blind {
     this.largePrice,
     this.width,
     this.height,
-});
+  });
 
-  factory Blind.fromMap(Map data){
+  factory Blind.fromMap(Map data) {
     return Blind(
       name: data['name'] ?? '',
       description: data['description'] ?? '',
-      color: data['color'] ?? '',
+      primaryColor: Color(data['accentColor'] ?? 0xffffffff),
+      accentColor: Color(data['primaryColor'] ?? 0xffffffff),
       brightness: data['brightness'] != null ? Brightness.values[data['brightness']] : Brightness.light,
       image: data['image'] ?? '',
       smallPrice: data['smallPrice'] ?? 0,
@@ -38,6 +40,4 @@ class Blind {
       largePrice: data['largePrice'] ?? 0,
     );
   }
-
-
 }

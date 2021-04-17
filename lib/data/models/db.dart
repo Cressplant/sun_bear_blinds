@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 
 class Database {
 
-
   static Map<String, dynamic> blinds = {
     '001' : {
       'name' : 'Story Book',
       'description' : '',
       'color' : 0xFF5695DD,
       'brightness' : 0,
-      'image' : 'storybook_blind.jpg',
+      'image' : 'assets/images/storybook_blind.jpg',
       'smallPrice' : 49.95,
       'mediumPrice' : 59.95,
       'largePrice' : 69.95,
@@ -21,7 +20,7 @@ class Database {
       'description' : '',
       'color' : 0xFFEFEFCB,
       'brightness' : 1,
-      'image' : 'dino_blind.jpg',
+      'image' : 'assets/images/dino_blind.jpg',
       'smallPrice' : 49.95,
       'mediumPrice' : 59.95,
       'largePrice' : 69.95,
@@ -31,7 +30,7 @@ class Database {
       'description' : '',
       'color' : 0xFF51877E,
       'brightness' : 0,
-      'image' : 'forest_blind.jpg',
+      'image' : 'assets/images/forest_blind.jpg',
       'smallPrice' : 49.95,
       'mediumPrice' : 59.95,
       'largePrice' : 69.95,
@@ -41,7 +40,7 @@ class Database {
       'description' : '',
       'color' : 0xFF92B58F,
       'brightness' : 1,
-      'image' : 'woodland_blind.jpg',
+      'image' : 'assets/images/woodland_blind.jpg',
       'smallPrice' : 49.95,
       'mediumPrice' : 59.95,
       'largePrice' : 69.95,
@@ -51,7 +50,7 @@ class Database {
       'description' : '',
       'color' : Colors.blueGrey.value,
       'brightness' : 0,
-      'image' : 'space_blind.jpg',
+      'image' : 'assets/images/space_blind.jpg',
       'smallPrice' : 49.95,
       'mediumPrice' : 59.95,
       'largePrice' : 69.95,
@@ -61,7 +60,7 @@ class Database {
       'description' : '',
       'color' : 0xFFA2C7E2,
       'brightness' : 1,
-      'image' : 'snowy_blind.jpg',
+      'image' : 'assets/images/snowy_blind.jpg',
       'smallPrice' : 49.95,
       'mediumPrice' : 59.95,
       'largePrice' : 69.95,
