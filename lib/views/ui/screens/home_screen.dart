@@ -30,7 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: NavigationBar(),
+        bottomNavigationBar: NavigationBar(
+          
+        ),
         body: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) => [
             SliverList(

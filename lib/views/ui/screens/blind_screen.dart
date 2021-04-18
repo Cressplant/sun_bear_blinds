@@ -65,7 +65,7 @@ class _BlindScreenState extends State<BlindScreen> {
                       Expanded(
                           child: Text(
                         'Width (cm)',
-                        style: _theme.textTheme.headline3,
+                        style: _theme.textTheme.headline2,
                       )),
                       Expanded(
                         child: TextFormField(
@@ -81,7 +81,7 @@ class _BlindScreenState extends State<BlindScreen> {
                       Expanded(
                           child: Text(
                         'Drop (cm)',
-                        style: _theme.textTheme.headline3,
+                        style: _theme.textTheme.headline2,
                       )),
                       Expanded(
                         child: TextFormField(
