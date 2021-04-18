@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sun_bear_blinds/business_logic/utils/themes.dart';
+import 'package:sun_bear_blinds/data/models/user_preferences.dart';
+import 'package:sun_bear_blinds/views/router/app_router.dart';
 import 'package:sun_bear_blinds/views/ui/screens/home_screen.dart';
 
 void main() {
@@ -8,23 +12,25 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // print(GoogleFonts.overlock().fontFamily);
+    return ChangeNotifierProvider(create: (_) => UserPreferences(), child: MaterialAppWithTheme(appRouter: AppRouter()));
+  }
+}
+
+class MaterialAppWithTheme extends StatelessWidget {
+  final AppRouter appRouter;
+
+  MaterialAppWithTheme({required this.appRouter});
+
+  @override
+  Widget build(BuildContext context) {
+    bool _darkMode = Provider.of<UserPreferences>(context).darkMode;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Sun Bear Blinds',
-      theme: ThemeData(
-          // fontFamily: GoogleFonts.overlock().fontFamily,
-          fontFamily: 'Overlock',
-          backgroundColor: Colors.white,
-          // textTheme: TextTheme(headline6: TextStyle(color: Colors.black87)),
-          appBarTheme: AppBarTheme(
-            elevation: 0,
-            color: Colors.white,
-            iconTheme: IconThemeData(),
-            textTheme: TextTheme(headline6: TextStyle(color: Colors.black87, fontSize: 18.0)),
-          )),
+      theme: Themes.getTheme(darkMode: _darkMode),
       home: HomeScreen(),
+      onGenerateRoute: appRouter.onGenerateRoute,
     );
   }
 }

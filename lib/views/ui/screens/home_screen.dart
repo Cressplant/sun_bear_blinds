@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sun_bear_blinds/data/models/blind.dart';
 import 'package:sun_bear_blinds/data/models/db.dart';
+import 'package:sun_bear_blinds/data/models/user_preferences.dart';
 import 'package:sun_bear_blinds/views/utils/blind_tile.dart';
 import 'package:sun_bear_blinds/views/utils/dark_mode_switch.dart';
 import 'package:sun_bear_blinds/views/utils/navigation_bar.dart';
@@ -14,7 +16,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Blind> _blinds = [];
-  bool _darkMode = false;
 
   @override
   void initState() {
@@ -29,55 +30,70 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
         bottomNavigationBar: NavigationBar(),
         body: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) => [
             SliverList(
                 delegate: SliverChildListDelegate([
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 10.0),
-                    child: Center(
-                        // child: Row(
-                        child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            DarkModeSwitch(
-                                value: _darkMode,
-                                onChanged: (_v) {
-                                  setState(() {
-                                    _darkMode = _v;
-                                  });
-                                }),
-                            // Switch(value: true, onChanged: (_v) {}) //!
-                          ],
-                        ),
-                        Container(
-                          height: 80.0,
-                          width: 80.0,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.05),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: Offset(2, 2), // changes position of shadow
-                                ),
-                              ],
-                              image: DecorationImage(image: AssetImage('assets/images/sun_bear_logo.png'), fit: BoxFit.contain)),
-                        ),
-                        SizedBox(height: 10.0),
-                        Text('Sun Bear Blinds', style: TextStyle(color: Colors.black, fontSize: 26, fontWeight: FontWeight.bold)),
-                      ],
+              Container(
+                decoration: BoxDecoration(
+                    color: _theme.cardColor,
+                    image: DecorationImage(
+                        image: AssetImage(_theme.brightness == Brightness.light ? 'assets/images/home_header_day.jpg' : 'assets/images/home_header_night.jpg'),
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter)),
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                        child: Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [_theme.cardColor, (_theme.brightness == Brightness.light ? Color(0x00ffffff) : Color(0x00000000))],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter)),
                     )),
-                  ),
-                ],
+                    Positioned(
+                      top: 10.0,
+                      right: 10.0,
+                      child: DarkModeSwitch(
+                          value: Provider.of<UserPreferences>(context, listen: false).darkMode,
+                          onChanged: (_v) {
+                            Provider.of<UserPreferences>(context, listen: false).updateUserPreferences(darkMode: _v);
+
+                            // setState(() {
+                            //   _darkMode = _v;
+                            // });
+                          }),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 60.0, bottom: 15.0),
+                      child: Center(
+                          // child: Row(
+                          child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            height: 80.0,
+                            width: 80.0,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.05),
+                                    spreadRadius: 1,
+                                    blurRadius: 2,
+                                    offset: Offset(2, 2), // changes position of shadow
+                                  ),
+                                ],
+                                image: DecorationImage(image: AssetImage('assets/images/sun_bear_logo.png'), fit: BoxFit.contain)),
+                          ),
+                          SizedBox(height: 10.0),
+                          Text('Sun Bear Blinds', style: _theme.textTheme.headline3?.copyWith(fontSize: 26, fontWeight: FontWeight.bold) ?? TextStyle()),
+                        ],
+                      )),
+                    ),
+                  ],
+                ),
               ),
             ])),
             SliverAppBar(
