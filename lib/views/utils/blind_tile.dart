@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sun_bear_blinds/business_logic/utils/colors.dart';
+import 'package:sun_bear_blinds/business_logic/utils/formatting.dart';
 import 'package:sun_bear_blinds/data/models/blind.dart';
 import 'package:sun_bear_blinds/views/ui/screens/blind_screen.dart';
 
@@ -10,13 +11,15 @@ class BlindTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool _mobile = checkMobile(context);
 
     return Padding(
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.all(_mobile ? 12.0 : 16.0),
       child: Hero(
         tag: blind.image,
         child: Material(
           child: Container(
+            constraints: BoxConstraints(maxWidth: 200.0),
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
               color: blind.primaryColor,
@@ -44,13 +47,7 @@ class BlindTile extends StatelessWidget {
                 children: [
                   Expanded(
                       child: Container(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              blind.image
-                            ),
-                            alignment: Alignment.bottomCenter,
-                            fit: BoxFit.cover)),
+                    decoration: BoxDecoration(image: DecorationImage(image: AssetImage(blind.image), alignment: Alignment.bottomCenter, fit: BoxFit.cover)),
                   )),
                   Center(
                     child: Padding(

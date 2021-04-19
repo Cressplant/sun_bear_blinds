@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 class NavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ThemeData _theme = Theme.of(context);
+
     return BottomNavigationBar(
-      backgroundColor: Colors(),
+      backgroundColor: _theme.accentColor,
       elevation: 20,
       items: [
-        BottomNavigationBarItem(
-            // icon: Icon(MdiIcons.windowClosedVariant, size: 20), //! REINSTATE WHEN PACKAGE NULL SAFE
-            icon: Icon(Icons.close, size: 20),
-            label: 'Blinds'),
+        // icon: Icon(MdiIcons.windowClosedVariant, size: 20), //! REINSTATE WHEN PACKAGE NULL SAFE
+        BottomNavigationBarItem(icon: Icon(Icons.close, size: 20), label: 'Blinds'),
         //BottomNavigationBarItem(icon: Icon(MdiIcons.informationOutline, size: 20), label: 'About'), //! REINSTATE WHEN PACKAGE NULL SAFE
         BottomNavigationBarItem(icon: Icon(Icons.close, size: 20), label: 'About'),
         //BottomNavigationBarItem(icon: Icon(MdiIcons.cart, size: 20), label: 'Cart'), //! REINSTATE WHEN PACKAGE NULL SAFE

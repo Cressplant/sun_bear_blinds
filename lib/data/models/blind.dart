@@ -5,6 +5,8 @@ class Blind {
   final String description;
   final Color primaryColor;
   final Color accentColor;
+  final Color backgroundLight;
+  final Color backgroundDark;
   // final Brightness brightness;
   final String image;
   final double smallPrice;
@@ -18,6 +20,8 @@ class Blind {
       required this.description,
       required this.accentColor,
       required this.primaryColor,
+      required this.backgroundLight,
+      required this.backgroundDark,
       // required this.brightness,
       required this.image,
       required this.smallPrice,
@@ -32,6 +36,8 @@ class Blind {
       description: data['description'] ?? '',
       primaryColor: Color(data['primaryColor'] ?? 0xffffffff),
       accentColor: Color(data['accentColor'] ?? 0xffffffff),
+      backgroundLight: Color(data['backgroundLight'] ?? 0xffffffff),
+      backgroundDark: Color(data['backgroundDark'] ?? 0xff000000),
       // brightness: data['brightness'] != null ? Brightness.values[data['brightness']] : Brightness.light,
       image: data['image'] ?? '',
       smallPrice: data['smallPrice'] ?? 0,
