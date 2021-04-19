@@ -7,7 +7,7 @@ class NavigationBar extends StatelessWidget {
     ThemeData _theme = Theme.of(context);
 
     return BottomNavigationBar(
-      backgroundColor: _theme.accentColor,
+      backgroundColor: _theme.primaryColor,
       elevation: 20,
       items: [
         // icon: Icon(MdiIcons.windowClosedVariant, size: 20), //! REINSTATE WHEN PACKAGE NULL SAFE
