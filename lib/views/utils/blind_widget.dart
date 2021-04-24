@@ -11,8 +11,8 @@ class BlindWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _actualWidth = recess ? width - 2.5 : width;
-    double _pixelHeight = height * 5;
-    double _pixelWidth = _actualWidth * 5;
+    double _pixelHeight = height * 10; //* 10:1 pixels to CM
+    double _pixelWidth = _actualWidth * 10; //*
 
     return Column(children: [
       Container(decoration: BoxDecoration(color: Colors.grey.shade200, borderRadius: BorderRadius.circular(3.0)), height: 24.0, width: _pixelWidth + 10.0),
