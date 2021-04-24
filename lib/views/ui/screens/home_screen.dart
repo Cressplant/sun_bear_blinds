@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:sun_bear_blinds/business_logic/utils/formatting.dart';
 import 'package:sun_bear_blinds/data/models/blind.dart';
-import 'package:sun_bear_blinds/data/models/db.dart';
+import 'package:sun_bear_blinds/business_logic/services/db.dart';
 import 'package:sun_bear_blinds/data/models/user_preferences.dart';
 import 'package:sun_bear_blinds/views/utils/blind_tile.dart';
 import 'package:sun_bear_blinds/views/utils/dark_mode_switch.dart';
